@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faiza Qiyyum | Full-Stack AI Engineer Portfolio</title>
+    <!-- Google Fonts including Handwriting & Playful Display types -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Patrick+Hand&family=Gaegu:wght@400;700&family=Architects+Daughter&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS v4 Browser CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <style type="text/css">
+      @import "tailwindcss";
+
+      @theme {
+        --font-handwritten: "Caveat", "Architects Daughter", cursive;
+        --font-heading: "Patrick Hand", "Gaegu", cursive;
+        --font-sans: "Plus Jakarta Sans", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --color-paper-light: #ffffff;
+        --color-canvas-gray: #eae7e1;
+        --color-ink-blue: #111827;
+        --color-ink-navy: #1e1b4b;
+        --color-highlight-teal: #0d9488;
+        --color-highlight-purple: #8b5cf6;
+        --color-highlight-pink: #db2777;
+        --color-highlight-yellow: #eab308;
+      }
+
+      /* Base Styles for the Scrapbook Paper Sketchpad Canvas */
+      body {
+        background-color: #f0ede6;
+        background-image: 
+          radial-gradient(#d3cfc5 1.5px, transparent 1.5px),
+          radial-gradient(#d3cfc5 1.5px, #f0ede6 1.5px);
+        background-size: 32px 32px;
+        background-position: 0 0, 16px 16px;
+        color: #1f2937;
+        font-family: var(--font-sans);
+        padding-bottom: 80px;
+        overflow-x: hidden;
+      }
+
+      /* Clean handwriting adjustments */
+      .ink-signature {
+        font-family: var(--font-handwritten);
+      }
+
+      .scrawled-heading {
+        font-family: var(--font-heading);
+        letter-spacing: -0.01em;
+      }
+
+      /* Washi Tape strips realistic styling */
+      .washi-tape-mint {
+        background: rgba(13, 148, 136, 0.25);
+        backdrop-filter: blur(0.5px);
+        border-left: 1px dashed rgba(13, 148, 136, 0.4);
+        border-right: 1px dashed rgba(13, 148, 136, 0.4);
+        box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4), 0 3px 6px rgba(0,0,0,0.04);
+      }
+
+      .washi-tape-pink {
+        background: rgba(219, 39, 119, 0.25);
+        backdrop-filter: blur(0.5px);
+        border-left: 1px dashed rgba(219, 39, 119, 0.4);
+        border-right: 1px dashed rgba(219, 39, 119, 0.4);
+        box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4), 0 3px 6px rgba(0,0,0,0.04);
+      }
+
+      .washi-tape-yellow {
+        background: rgba(234, 179, 8, 0.28);
+        backdrop-filter: blur(0.5px);
+        border-left: 1px dashed rgba(234, 179, 8, 0.4);
+        border-right: 1px dashed rgba(234, 179, 8, 0.4);
+        box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4), 0 3px 6px rgba(0,0,0,0.04);
+      }
+
+      .washi-tape-purple {
+        background: rgba(139, 92, 246, 0.25);
+        backdrop-filter: blur(0.5px);
+        border-left: 1px dashed rgba(139, 92, 246, 0.4);
+        border-right: 1px dashed rgba(139, 92, 246, 0.4);
+        box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.4), 0 3px 6px rgba(0,0,0,0.04);
+      }
+
+      /* Subtle hand-made paper rotation offset */
+      .paper-offset-left {
+        transform: rotate(-0.6deg);
+      }
+      .paper-offset-right {
+        transform: rotate(0.8deg);
+      }
+      .paper-offset-deep {
+        transform: rotate(-1.2deg);
+      }
+
+      /* Coffee ring stains using radial gradients */
+      .coffee-ring {
+        background: radial-gradient(circle, transparent 60%, rgba(139, 115, 85, 0.08) 64%, transparent 68%, transparent 100%);
+        width: 140px;
+        height: 140px;
+        pointer-events: none;
+      }
+
+      /* Grid elements for the background behind pages */
+      .notebook-wire {
+        background: repeating-linear-gradient(to right, #6b7280, #6b7280 4px, #4b5563 4px, #4b5563 8px, #374151 8px, #374151 12px, transparent 12px, transparent 40px);
+      }
+
+      /* Highlighter marker sweeps */
+      .marker-highlight {
+        background: linear-gradient(120deg, rgba(253, 224, 71, 0.5) 0%, rgba(253, 224, 71, 0.7) 100%);
+        border-radius: 2px;
+        padding: 0px 4px;
+      }
+
+      .marker-highlight-mint {
+        background: linear-gradient(120deg, rgba(45, 212, 191, 0.45) 0%, rgba(45, 212, 191, 0.65) 100%);
+        border-radius: 2px;
+        padding: 0px 4px;
+      }
+
+      .marker-highlight-pink {
+        background: linear-gradient(120deg, rgba(244, 114, 182, 0.4) 0%, rgba(244, 114, 182, 0.6) 100%);
+        border-radius: 2px;
+        padding: 0px 4px;
+      }
+
+      /* Blinking CRT screen animation */
+      @keyframes crt-glow {
+        0%, 100% { opacity: 0.95; filter: brightness(1); }
+        50% { opacity: 1; filter: brightness(1.15); }
+      }
+      .animate-crt {
+        animation: crt-glow 4s infinite ease-in-out;
+      }
+
+      /* Steaming coffee vapor animation */
+      @keyframes steam {
+        0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 0; }
+        20% { opacity: 0.5; }
+        60% { transform: translateY(-16px) scale(1.1) rotate(2deg); opacity: 0.3; }
+        100% { transform: translateY(-32px) scale(1.25) rotate(-3deg); opacity: 0; }
+      }
+      .animate-steam-1 {
+        animation: steam 5s infinite linear;
+      }
+      .animate-steam-2 {
+        animation: steam 5.5s infinite linear 2.5s;
+      }
+
+      /* Marquee style code flow */
+      @keyframes code-stream {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-50%); }
+      }
+      .animate-code-flow {
+        animation: code-stream 15s infinite linear;
+      }
+
+      /* Floating handdrawn star drawing */
+      @keyframes float-star {
+        0%, 100% { transform: translateY(0) rotate(5deg); }
+        50% { transform: translateY(-6px) rotate(-5deg); }
+      }
+      .animate-float-star {
+        animation: float-star 6s infinite ease-in-out;
+      }
+
+      /* Navigation indicator pulse */
+      @keyframes tab-glow {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      .active-tab-glow {
+        animation: tab-glow 2s infinite ease-in-out;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-teal-200 selection:text-teal-900">
+    <div id="root">
+      <!-- MAIN PAGE FRAMEWORK -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+        
+        <!-- HEADER PROFILE LABEL -->
+        <header class="mb-8 flex flex-col sm:flex-row justify-between items-center bg-white border-[3px] border-slate-900 shadow-md p-5 rounded-2xl transform rotate-[-0.3deg] relative overflow-hidden">
+          <div class="absolute top-0 right-10 coffee-ring opacity-40"></div>
+          
+          <div class="flex items-center gap-4 z-10">
+            <div class="w-14 h-14 rounded-full bg-slate-900 flex items-center justify-center text-3xl font-heading shadow-inner text-white select-none">
+              🎨
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <h1 class="font-heading text-3xl font-black tracking-tight text-slate-900">
+                  FAIZA QIYYUM
+                </h1>
+              </div>
+              <p class="text-xs font-mono font-bold text-slate-500 mt-1 uppercase tracking-wider flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-teal-500 inline-block animate-ping"></span>
+                AI Engineer
+              </p>
+            </div>
+          </div>
+
+          <!-- Quick Top Contacts decorated like adhesive tag notes -->
+          <div class="flex gap-2 mt-4 sm:mt-0 z-10">
+            <a href="mailto:faizaqiyyum121@gmail.com" class="bg-amber-100 hover:bg-amber-200 border-[2px] border-slate-900 px-3 py-1.5 rounded-lg text-xs font-heading font-black tracking-wide text-slate-900 transition-transform hover:-translate-y-0.5 shadow-sm">
+              ✉️ faizaqiyyum121@gmail.com
+            </a>
+            <div class="bg-teal-50 border-[2px] border-slate-900 px-3 py-1.5 rounded-lg text-xs font-heading font-semibold text-slate-800 shadow-sm hidden md:block select-none rotate-[1deg]">
+              📌 Remote Base
+            </div>
+          </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
+          
+          <!-- LEFT SIDEBAR STICKY NAV REVOLVING TABS (Journal Bookmark Tabs) -->
+          <aside class="lg:col-span-3 lg:sticky lg:top-8 z-30 flex flex-row lg:flex-col flex-wrap justify-between gap-2 bg-white/70 backdrop-blur-md p-3.5 border-[2px] border-slate-900 shadow-md rounded-2xl transform rotate-[0.5deg]">
+            <p class="hidden lg:block font-heading text-lg font-black text-slate-900 uppercase tracking-widest border-b-[2.5px] border-slate-900 pb-2 mb-3">
+              📔 JOURNAL PAGES
+            </p>
+            
+            <nav class="flex flex-row lg:flex-col gap-2 w-full flex-wrap sm:flex-nowrap lg:flex-wrap">
+              <a href="#page-hero" onclick="setActiveTab(this)" class="nav-tab shrink-0 w-[47%] sm:w-auto lg:w-full flex items-center gap-2.5 px-4 py-3 bg-white hover:bg-amber-50 border-[2.5px] border-slate-900 rounded-xl transition-all font-heading text-md font-bold text-slate-900 text-left cursor-pointer shadow-sm">
+                <span class="text-xl">☀️</span>
+                <span class="flex-1">01. HERO INTRO</span>
+              </a>
+              <a href="#page-experience" onclick="setActiveTab(this)" class="nav-tab shrink-0 w-[47%] sm:w-auto lg:w-full flex items-center gap-2.5 px-4 py-3 bg-white hover:bg-amber-50 border-[2.5px] border-slate-900 rounded-xl transition-all font-heading text-md font-bold text-slate-900 text-left cursor-pointer shadow-sm">
+                <span class="text-xl">💼</span>
+                <span class="flex-1">02. WORK STORY</span>
+              </a>
+              <a href="#page-hackathons" onclick="setActiveTab(this)" class="nav-tab shrink-0 w-[47%] sm:w-auto lg:w-full flex items-center gap-2.5 px-4 py-3 bg-white hover:bg-amber-50 border-[2.5px] border-slate-900 rounded-xl transition-all font-heading text-md font-bold text-slate-900 text-left cursor-pointer shadow-sm">
+                <span class="text-xl">🏆</span>
+                <span class="flex-1">03. GLOBAL WINS</span>
+              </a>
+              <a href="#page-projects" onclick="setActiveTab(this)" class="nav-tab shrink-0 w-[47%] sm:w-auto lg:w-full flex items-center gap-2.5 px-4 py-3 bg-white hover:bg-amber-50 border-[2.5px] border-slate-900 rounded-xl transition-all font-heading text-md font-bold text-slate-900 text-left cursor-pointer shadow-sm">
+                <span class="text-xl">📸</span>
+                <span class="flex-1">04. PROJECT SHOTS</span>
+              </a>
+              <a href="#page-skills" onclick="setActiveTab(this)" class="nav-tab shrink-0 w-[47%] sm:w-auto lg:w-full flex items-center gap-2.5 px-4 py-3 bg-white hover:bg-amber-50 border-[2.5px] border-slate-900 rounded-xl transition-all font-heading text-md font-bold text-slate-900 text-left cursor-pointer shadow-sm">
+                <span class="text-xl">✏️</span>
+                <span class="flex-1">05. TECH STICKERS</span>
+              </a>
+              <a href="#page-academics" onclick="setActiveTab(this)" class="nav-tab shrink-0 w-[47%] sm:w-auto lg:w-full flex items-center gap-2.5 px-4 py-3 bg-white hover:bg-amber-50 border-[2.5px] border-slate-900 rounded-xl transition-all font-heading text-md font-bold text-slate-900 text-left cursor-pointer shadow-sm">
+                <span class="text-xl">🎓</span>
+                <span class="flex-1">06. CHANNELS</span>
+              </a>
+            </nav>
+
+            <div class="hidden lg:flex flex-col items-center justify-center p-3 mt-4 border-2 border-dashed border-slate-350 rounded-xl bg-slate-50 relative">
+              <span class="absolute top-1 right-2 text-xs">⭐</span>
+              <p class="font-handwritten text-xs text-center text-slate-500 font-bold leading-relaxed">
+                "Handcrafted using custom zine aesthetics and Tailwind v4 compiled classes."
+              </p>
+            </div>
+          </aside>
+
+          <!-- RIGHT NOTEBOOK INNER PAGE STREAM (Our custom interactive book layout) -->
+          <main class="lg:col-span-9 space-y-12">
+            
+            <!-- PAGE 1: HERO & INTRO -->
+            <section id="page-hero" class="relative group">
+              <!-- Sticky Tape on Top Edge of this block -->
+              <div class="absolute -top-4 left-10 w-28 h-8 washi-tape-mint rotate-[-1.5deg] z-10 flex items-center justify-center font-mono text-[9px] text-teal-900 font-black tracking-widest uppercase">
+                HELLO // SYS
+              </div>
+              <div class="absolute -top-3 right-16 w-32 h-7 washi-tape-pink rotate-[2deg] z-10 flex items-center justify-center font-mono text-[9px] text-pink-900 font-black tracking-widest uppercase">
+                FQ.ENGINEERING
+              </div>
+
+              <!-- Page Body representing spiral notebook layout sheet overlay -->
+              <div class="bg-white border-[3.5px] border-slate-900 shadow-md md:shadow-lg p-6 sm:p-10 rounded-3xl relative overflow-hidden paper-offset-left transition-all hover:rotate-0 duration-300">
+                <!-- Spiral Binding representation along the top of each block -->
+                <div class="absolute inset-x-0 top-0 h-4 flex justify-between px-6 opacity-85 select-none pointer-events-none">
+                  <div class="flex gap-4">
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -mt-2"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -mt-2"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -mt-2"></span>
+                  </div>
+                  <div class="flex gap-4">
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -mt-2"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -mt-2"></span>
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -mt-2"></span>
+                  </div>
+                </div>
+
+                <!-- Grid alignment background detail inside paper sheet -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_29px,#f3f4f6_30px)] bg-[size:100%_30px] opacity-70 pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center relative z-10 pt-4">
+                  <!-- Word Description Frame -->
+                  <div class="md:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-1.5 bg-yellow-100 border-2 border-slate-900 px-3 py-1.5 rounded-full transform rotate-[-3deg] shadow-sm">
+                      <span class="text-base select-none">✨</span>
+                      <span class="font-heading font-black text-sm text-slate-800 uppercase tracking-wide">LEVEL-5 CLEARANCE DOSSIER</span>
+                    </div>
+
+                    <div class="space-y-3.5">
+                      <span class="font-handwritten text-3xl font-bold text-pink-500 block">Introducing...</span>
+                      <h2 class="font-heading text-4xl sm:text-5xl font-black text-slate-900 leading-none">
+                        Hi, I'm <span class="text-teal-980">Faiza Qiyyum</span>. AI Engineer Currently working in USA based startup.
+                      </h2>
+                      <p class="font-sans text-sm sm:text-base font-medium leading-relaxed text-slate-750 border-l-[3px] border-emerald-500 pl-4 py-1.5 mt-2">
+                        "Building smart software applications by combining clean web development with Generative AI tools."
+                      </p>
+                    </div>
+
+                    <!-- Highlighter marker details and sketches -->
+                    <div class="bg-amber-50/90 border-[2.5px] border-dashed border-slate-400 p-4 rounded-xl relative transform rotate-[0.4deg] overflow-hidden">
+                      <span class="absolute -bottom-4 -right-4 text-5xl opacity-15 select-none font-handwritten">☕</span>
+                      <h4 class="font-heading text-lg font-black text-slate-800 mb-1 flex items-center gap-2">
+                        <span>💡</span> MY MISSION
+                      </h4>
+                      <p class="text-xs font-sans text-slate-600 font-semibold leading-relaxed">
+                        I am currently working as an AI Engineer at a USA-based startup, where I am leading the technical architecture for <strong>"Techie Tim's World,"</strong> an AI-focused literacy platform designed for neurodiverse children. I am integrating OpenAI GPT-4o via Django REST API with Phaser.js game mechanics to deliver real-time, empathetic AI feedback, and building adaptive learning profiles and student progress data pipelines using PostgreSQL and Supabase.
+                      </p>
+                    </div>
+
+                    <!-- Quick buttons link structured like tape tags -->
+                    <div class="pt-2 flex gap-3 flex-wrap">
+                      <a href="#page-experience" class="bg-teal-500 hover:bg-teal-600 border-[2.5px] border-slate-900 rounded-xl px-5 py-3 font-heading text-md font-black text-white hover:shadow-md transition-all inline-flex items-center gap-2">
+                        <span>📓 SEE EXPERIENCE LOG</span>
+                        <span>➔</span>
+                      </a>
+                      <a href="#page-projects" class="bg-violet-500 hover:bg-violet-600 border-[2.5px] border-slate-900 rounded-xl px-5 py-3 font-heading text-md font-black text-white hover:shadow-md transition-all inline-flex items-center gap-2">
+                        <span>📸 ARTIFACTS IN VIEW</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Animated Workstation Computer Setup Graphic -->
+                  <div class="md:col-span-5 flex justify-center py-4">
+                    <div class="relative w-full max-w-[280px] p-4 bg-[#fbf6ec] border-[3px] border-slate-900 shadow-md rounded-2xl transform rotate-[1.5deg] select-none hover:rotate-0 transition-transform duration-300">
+                      <!-- Title sticker pin -->
+                      <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-yellow-250 border-2 border-amber-400 px-3 py-0.5 text-[8.5px] font-mono font-black border-slate-900 rounded-md washi-tape-yellow uppercase text-amber-900">
+                        *WORKSTATION_CALIBRATED*
+                      </span>
+
+                      <!-- Computer Case Outer Wrapper -->
+                      <div class="w-full bg-[#eee5d3] border-[3px] border-slate-900 p-2.5 rounded-lg shadow-[inset_0_4px_0_rgba(255,255,255,0.7),_0_6px_0_#caa981] relative">
+                        <!-- Disk slots and face detailing -->
+                        <div class="absolute -left-[3px] top-6 w-[3px] h-10 bg-slate-900"></div>
+                        <div class="absolute -right-[3px] top-12 w-[3px] h-8 bg-slate-900"></div>
+
+                        <!-- Monitor Screen Panel -->
+                        <div class="aspect-[4/3] bg-black border-[3px] border-slate-900 rounded-md p-2 overflow-hidden relative flex flex-col justify-between animate-crt">
+                          <!-- CRT glass lines overlay -->
+                          <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,_rgba(0,0,0,0.25)_50%),_linear-gradient(90.0deg,_rgba(255,0,0,0.06),_rgba(0,255,0,0.02),_rgba(0,0,255,0.06))] bg-[size:100%_4px,_6px_100%] pointer-events-none z-10"></div>
+                          <div class="absolute inset-0 bg-teal-950/25 pointer-events-none"></div>
+
+                          <!-- Top Screen bar -->
+                          <div class="flex items-center justify-between text-[7px] font-mono text-emerald-400 tracking-wider">
+                            <span>SYS_MONITOR_ON</span>
+                            <span>CPU: 4.0 FYP GPA</span>
+                          </div>
+
+                          <!-- Scrolling code logs inside screen -->
+                          <div class="flex-1 overflow-hidden my-1 relative">
+                            <div class="absolute inset-x-0 top-0 text-[7px] font-mono text-emerald-300 leading-relaxed font-bold space-y-1 select-none animate-code-flow">
+                              <p class="text-pink-400">&gt; npm run dev_pipeline</p>
+                              <p class="text-teal-300">✔ Supabase cluster linked</p>
+                              <p class="text-amber-300">✔ GPT-4o Embeddings OK</p>
+                              <p class="text-purple-300">✔ Django endpoints live</p>
+                              <p class="text-teal-400">✔ Port: 3000 online</p>
+                              <p class="text-emerald-300">&gt; state: READY_FOR_MISSION</p>
+                              <p class="text-pink-400">&gt; npm run dev_pipeline</p>
+                              <p class="text-teal-300">✔ Supabase cluster linked</p>
+                              <p class="text-amber-300">✔ GPT-4o Embeddings OK</p>
+                              <p class="text-purple-300">✔ Django endpoints live</p>
+                            </div>
+                          </div>
+
+                          <!-- Interactive cursor terminal footer details on screen -->
+                          <div class="flex items-center justify-between font-mono text-[6.5px] text-emerald-400 pt-1 border-t border-emerald-990 border-emerald-900/40">
+                            <span>FAIZA_SYS V4.1</span>
+                            <span class="animate-pulse">● ONLINE</span>
+                          </div>
+                        </div>
+
+                        <!-- Vent lines below screen -->
+                        <div class="flex justify-between px-6 py-2.5">
+                          <span class="w-10 h-1 bg-slate-500 rounded-full"></span>
+                          <span class="w-4 h-1 bg-slate-500 rounded-full animate-pulse"></span>
+                        </div>
+                      </div>
+
+                      <!-- Computer Stand and keyboard desk representation -->
+                      <div class="flex flex-col items-center">
+                        <div class="w-16 h-4 bg-[#caa981] border-[3px] border-t-0 border-slate-900 shadow-sm relative"></div>
+                        
+                        <!-- Mini keyboard sketch -->
+                        <div class="w-36 h-3 bg-[#eadecd] border-[3px] border-slate-900 rounded-sm flex justify-between px-2 items-center">
+                          <span class="w-1.5 h-1 bg-slate-700/60 rounded"></span>
+                          <span class="w-20 h-1 bg-slate-800/80 rounded-sm"></span>
+                          <span class="w-2.5 h-1 bg-slate-900 rounded"></span>
+                        </div>
+                      </div>
+
+                      <!-- Steaming Coffee Cup & Stars floating doodles -->
+                      <div class="absolute -right-6 bottom-4 flex flex-col items-center select-none">
+                        <!-- Floating steam lines -->
+                        <div class="relative h-6 w-4 flex justify-between select-none">
+                          <svg class="w-2 h-4 text-slate-500 hover:text-rose-500 animate-steam-1 absolute left-1" viewBox="0 0 10 20" fill="none" stroke="currentColor">
+                            <path d="M2,15 Q8,10 2,5 T8,0" stroke-width="2.5"></path>
+                          </svg>
+                          <svg class="w-2 h-4 text-slate-500 hover:text-rose-500 animate-steam-2 absolute left-2.5" viewBox="0 0 10 20" fill="none" stroke="currentColor">
+                            <path d="M2,15 Q8,10 2,5 T8,0" stroke-width="2.5"></path>
+                          </svg>
+                        </div>
+                        <!-- Coffee Cup outline styled -->
+                        <div class="w-7 h-6 bg-rose-100 border-2 border-slate-900 rounded-b-md relative flex items-center justify-center">
+                          <span class="text-[9px] font-heading font-black select-none text-rose-600">☕</span>
+                          <span class="absolute right-[-4px] top-1.5 w-1.5 h-2.5 border-2 border-l-0 border-slate-900 rounded-r-md"></span>
+                        </div>
+                      </div>
+
+                      <!-- Hand-drawn Star Sketch overlapping workspace -->
+                      <div class="absolute -left-6 top-8 text-yellow-500 animate-float-star text-2xl select-none">
+                        ✦
+                      </div>
+                      <div class="absolute -right-4 -top-6 text-pink-500 animate-float-star text-lg select-none" style="animation-delay: 2s;">
+                        ★
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Ink Scribble Stamp inside first page -->
+                <div class="absolute bottom-4 right-10 flex items-center gap-1 opacity-20 transform rotate-[-8deg] pointer-events-none select-none">
+                  <div class="border-2 border-dashed border-sky-850 text-sky-900 p-2 font-handwritten text-xs font-black rounded-lg">
+                    CRAFTED FOR PRODUCTION 2026 //
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- PAGE 2: PROFESSIONAL EXPERIENCE -->
+            <section id="page-experience" class="relative">
+              <!-- Sticky tape details -->
+              <div class="absolute -top-4 left-1/3 -translate-x-1/2 w-32 h-8 washi-tape-purple rotate-[-2.5deg] z-10 flex items-center justify-center font-mono text-[9px] text-purple-900 font-extrabold pb-0.5">
+                ✦ MISSION HISTORY ✦
+              </div>
+
+              <div class="bg-white border-[3.5px] border-slate-900 shadow-md md:shadow-lg p-6 sm:p-10 rounded-3xl relative overflow-hidden paper-offset-right transition-all hover:rotate-0 duration-300">
+                <!-- Outer notebook wire punch-holes decoration -->
+                <div class="absolute inset-y-0 left-0 w-6 flex flex-col justify-between py-10 opacity-70 select-none">
+                  <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -ml-2"></span>
+                  <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -ml-2"></span>
+                  <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -ml-2"></span>
+                  <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-slate-900 -ml-2"></span>
+                </div>
+
+                <!-- Notebook margin line -->
+                <div class="absolute left-8 inset-y-0 w-[2px] bg-red-300 pointer-events-none opacity-60"></div>
+
+                <div class="pl-6 z-10 relative">
+                  <div class="flex items-center gap-2 mb-6">
+                    <span class="text-3xl select-none">💼</span>
+                    <h3 class="font-heading text-3xl font-black text-slate-900 tracking-tight">
+                      PROFESSIONAL EXP STORY
+                    </h3>
+                  </div>
+
+                  <!-- HANDWRITTEN TIMELINE OF REMOTE JOBS -->
+                  <div class="space-y-12 border-l-2 border-stone-800 border-dashed ml-3 pl-6 relative">
+                    
+                    <!-- WORK STATION 1 -->
+                    <div class="relative group">
+                      <!-- Sketch circular pin linking timeline node -->
+                      <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-teal-400 border-[2.5px] border-slate-900 shadow-sm"></span>
+
+                      <div class="space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                          <div>
+                            <h4 class="font-heading text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                              <span>Full-Stack AI Engineer</span>
+                              <span class="text-sm font-mono washi-tape-mint border border-teal-500/30 text-teal-900 px-2 rounded font-black">@ Seek & Sight (USA)</span>
+                            </h4>
+                            <p class="text-xs font-mono font-bold text-slate-500 uppercase mt-0.5">
+                              📆 May 2026 – Present — <span class="text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded font-black">STUDY CASE / REMOTE</span>
+                            </p>
+                          </div>
+                        </div>
+
+                        <!-- Highlights point tags -->
+                        <ul class="space-y-2 text-sm text-slate-680 text-slate-700 font-sans leading-relaxed">
+                          <li class="flex items-start gap-2">
+                            <span class="text-teal-600 text-lg select-none leading-none">✓</span>
+                            <span>Leading the technical architecture for "Techie Tim's World," an AI-focused literacy platform for neurodiverse children.</span>
+                          </li>
+                          <li class="flex items-start gap-2">
+                            <span class="text-teal-600 text-lg select-none leading-none">✓</span>
+                            <span>Integrating OpenAI GPT-4o via Django REST API with Phaser.js game mechanics to deliver real-time, empathetic AI feedback.</span>
+                          </li>
+                          <li class="flex items-start gap-2">
+                            <span class="text-teal-600 text-lg select-none leading-none">✓</span>
+                            <span>Building adaptive learning profiles and student progress data pipelines using PostgreSQL and Supabase.</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <!-- WORK STATION 2 -->
+                    <div class="relative group">
+                      <!-- Sketch timeline pin node -->
+                      <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-pink-400 border-[2.5px] border-slate-900 shadow-sm"></span>
+
+                      <div class="space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                          <div>
+                            <h4 class="font-heading text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                              <span>Full Stack Developer</span>
+                              <span class="text-sm font-mono washi-tape-pink border border-pink-500/30 text-pink-900 px-2 rounded font-black">@ EcoVerum (Netherlands)</span>
+                            </h4>
+                            <p class="text-xs font-mono font-bold text-slate-500 uppercase mt-0.5">
+                              📆 May 2026 – Present — <span class="text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded font-black">CLIENT MISSION / REMOTE</span>
+                            </p>
+                          </div>
+                        </div>
+
+                        <!-- Highlight bullets -->
+                        <ul class="space-y-2 text-sm text-slate-700 font-sans leading-relaxed">
+                          <li class="flex items-start gap-2">
+                            <span class="text-pink-600 text-lg select-none leading-none">✓</span>
+                            <span>Helping build soil health maps and tools for international clients using modern React.</span>
+                          </li>
+                          <li class="flex items-start gap-2">
+                            <span class="text-pink-600 text-lg select-none leading-none">✓</span>
+                            <span>Creating simple dashboards, custom charts, and backend APIs using Django and PostgreSQL.</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <!-- WORK STATION 3 -->
+                    <div class="relative group">
+                      <!-- Sketch timeline circular pin node -->
+                      <span class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-yellow-400 border-[2.5px] border-slate-900 shadow-sm"></span>
+
+                      <div class="space-y-3">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                          <div>
+                            <h4 class="font-heading text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+                              <span>Usability Tester</span>
+                              <span class="text-sm font-mono washi-tape-yellow border border-amber-600/30 text-yellow-905 text-amber-900 px-2 rounded font-black">@ CoachBridge AS (Norway)</span>
+                            </h4>
+                            <p class="text-xs font-mono font-bold text-slate-500 uppercase mt-0.5">
+                              📆 May 2026 – Present — <span class="text-red-001 text-red-600 bg-red-50 border border-red-200 px-2.5 py-0.5 rounded font-black">VERIFICATION NODE / REMOTE</span>
+                            </p>
+                          </div>
+                        </div>
+
+                        <!-- Bullet notes lists -->
+                        <ul class="space-y-2 text-sm text-slate-700 font-sans leading-relaxed">
+                          <li class="flex items-start gap-2">
+                            <span class="text-amber-600 text-lg select-none leading-none">✓</span>
+                            <span>Testing AI models, speech interfaces, and finding bugs before they go live.</span>
+                          </li>
+                          <li class="flex items-start gap-2">
+                            <span class="text-amber-600 text-lg select-none leading-none">✓</span>
+                            <span>Writing detailed and easy bug reports to help developers fix features quickly.</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Ink doodle border marker decorations -->
+                <div class="absolute bottom-4 left-6 text-slate-400/30 font-handwritten text-xl rotate-[12deg] pointer-events-none select-none">
+                  ✔ DjangoREST, GPT-4o, Supabase, Postgres data logs verified.
+                </div>
+              </div>
+            </section>
+
+            <!-- PAGE 3: HACKATHONS & GLOBAL RECOGNITION -->
+            <section id="page-hackathons" class="relative">
+              <!-- Sticky tape detail -->
+              <div class="absolute -top-4 right-1/4 w-32 h-8 washi-tape-mint rotate-[3deg] z-10 flex items-center justify-center font-mono text-[9px] text-teal-900 font-black tracking-widest uppercase">
+                🏆 CHAMPION RECORD
+              </div>
+
+              <!-- Overlapping zine paper sheet layout -->
+              <div class="bg-white border-[3.5px] border-slate-900 shadow-md md:shadow-lg p-6 sm:p-10 rounded-3xl relative overflow-hidden paper-offset-left transition-all hover:rotate-0 duration-300">
+                <!-- Grid background notebook texture -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_29px,#f3f4f6_30px)] bg-[size:100%_30px] opacity-70 pointer-events-none"></div>
+
+                <div class="relative z-10 space-y-6">
+                  <div class="flex items-center gap-2">
+                    <span class="text-3xl select-none">🏆</span>
+                    <h3 class="font-heading text-3xl font-black text-slate-900 tracking-tight uppercase">
+                      TOURNAMENT CHAMPIONSHIPS
+                    </h3>
+                  </div>
+
+                  <!-- Hackathon Winner Banner box designed like a vintage prize coupon cardboard clipping -->
+                  <div class="bg-rose-50 border-[3.5px] border-double border-red-700 p-6 rounded-2xl relative transform rotate-[-0.8deg] hover:rotate-0 transition-transform duration-300">
+                    <div class="space-y-4 max-w-2xl">
+                      <div class="inline-flex items-center gap-1.5 bg-yellow-105 bg-yellow-200 border-2 border-slate-900 px-3 py-1 rounded">
+                        <span class="text-sm select-none">🥇</span>
+                        <span class="font-heading font-black text-xs text-slate-800 uppercase tracking-widest">GLOBAL HACKATHON WINNER PROJECT</span>
+                      </div>
+
+                      <h4 class="font-heading text-3xl font-black text-slate-900 tracking-tight leading-none">
+                        forums. x v0 Vercel Global Tournament Winner!
+                      </h4>
+
+                      <p class="font-sans text-sm font-semibold leading-relaxed text-slate-700">
+                        Selected as a premium Project Winner in the hyper-competitive international <span class="marker-highlight">Foru.ms x v0 Vercel Global Hackathon</span> among a global registry of <span class="marker-highlight font-bold">163+ world-class developers</span> during an intense, rapid 24-hour development sprint.
+                      </p>
+
+                      <!-- Key Stats of accomplishment mapped list -->
+                      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs font-mono font-bold text-slate-800">
+                        <div class="bg-red-50 border border-slate-900 p-2.5 rounded text-center shadow-sm">
+                          <p class="text-slate-500 text-[10px] uppercase">Sprint Duration</p>
+                          <p class="text-red-700 font-black text-lg">24 HOURS</p>
+                        </div>
+                        <div class="bg-red-50 border border-slate-900 p-2.5 rounded text-center shadow-sm">
+                          <p class="text-slate-500 text-[10px] uppercase">Rival Builders</p>
+                          <p class="text-red-700 font-black text-lg">163+ DEV TEAM</p>
+                        </div>
+                        <div class="bg-red-50 border border-slate-900 p-2.5 rounded text-center shadow-sm">
+                          <p class="text-slate-500 text-[10px] uppercase">Trophy Output</p>
+                          <p class="text-red-700 font-black text-lg">GOLD BRACKET</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Scattered doodle arrow and star -->
+                <div class="absolute bottom-4 right-10 text-yellow-500 text-4xl select-none animate-float-star hidden sm:block">
+                  ★
+                </div>
+              </div>
+            </section>
+
+            <!-- PAGE 4: ARTIFACTS & PROJECTS -->
+            <section id="page-projects" class="relative">
+              <!-- Sticky tape ribbon -->
+              <div class="absolute -top-4 left-10 w-28 h-8 washi-tape-pink rotate-[-1.5deg] z-10 flex items-center justify-center font-mono text-[9px] text-pink-900 font-black tracking-widest uppercase">
+                📸 SNAP ARCHIVE
+              </div>
+
+              <!-- Page canvas white pad layout -->
+              <div class="bg-white border-[3.5px] border-slate-900 shadow-md md:shadow-lg p-6 sm:p-10 rounded-3xl relative overflow-hidden paper-offset-deep transition-all hover:rotate-0 duration-300">
+                <!-- Coffee cup stain vector background overlay -->
+                <div class="absolute top-1/4 left-1/3 coffee-ring opacity-25"></div>
+
+                <div class="relative z-10 space-y-6">
+                  <div class="flex items-center gap-2 border-b-2 border-dashed border-slate-205 border-slate-300 pb-3">
+                    <span class="text-3xl select-none">📸</span>
+                    <h3 class="font-heading text-3xl font-black text-slate-900 tracking-tight">
+                      ARTIFACTS & PRODUCTION PROJECTS
+                    </h3>
+                  </div>
+
+                  <p class="font-handwritten text-lg font-bold text-slate-650 leading-relaxed max-w-xl">
+                    Hover and flip through these polaroid-style image cards showing actual client products and systems defended successfully.
+                  </p>
+
+                  <!-- THREE POLAROID CARDS GRID -->
+                  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                    
+                    <!-- POLAROID CARD 1 -->
+                    <div class="bg-slate-50 border-[2.5px] border-slate-900 p-4 shadow-sm hover:shadow-md transition-all duration-300 transform rotate-[-1.5deg] hover:rotate-0 hover:-translate-y-1.5 flex flex-col justify-between group">
+                      <div>
+                        <!-- Polaroid Image Box -->
+                        <div class="aspect-square bg-slate-100 border-2 border-slate-900 rounded-sm mb-3.5 relative overflow-hidden flex flex-col justify-end p-2.5">
+                          <!-- Ink stamp on photo -->
+                          <div class="absolute top-2 right-2 border border-red-500 font-mono text-[6.5px] font-black tracking-widest text-red-600 bg-white/95 px-1 rounded uppercase">
+                            LIVE PROTOCOL
+                          </div>
+                          
+                          <!-- Visual representation of Forum NLP dashboard -->
+                          <div class="absolute inset-0 flex flex-col justify-center items-center bg-teal-900/10 group-hover:bg-transparent transition-colors p-3 text-center">
+                            <!-- Draw retro box with doodle code -->
+                            <div class="w-16 h-12 bg-white border border-slate-700 rounded p-1 flex flex-col justify-between shadow-sm select-none">
+                              <div class="flex gap-0.5 justify-start">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+                              </div>
+                              <span class="text-[8px] font-mono text-slate-400 font-black leading-none uppercase">FORUM_AI</span>
+                              <span class="text-[5px] font-mono text-slate-300 tracking-tighter truncate leading-none">GPT-4o summarizer ...</span>
+                            </div>
+                            <!-- Mini floating star doodle -->
+                            <span class="text-xs text-yellow-500 mt-2 select-none animate-bounce">✦</span>
+                          </div>
+
+                          <div class="relative z-10 bg-slate-900/90 border border-slate-800 text-white font-mono text-[8.5px] font-bold p-1.5 rounded uppercase leading-relaxed shrink-0">
+                            NLP SUMMARY CORE V1
+                          </div>
+                        </div>
+
+                        <h4 class="font-heading text-xl font-black text-slate-950 tracking-tight leading-none uppercase">
+                          Forum-AI-Lite
+                        </h4>
+                        <p class="font-sans text-[11.5px] text-slate-600 font-semibold leading-relaxed mt-2 uppercase">
+                          • NLP-driven platforms engineered to process conversational threads, extracting priority action registers.
+                        </p>
+                      </div>
+
+                      <div class="pt-4 mt-4 border-t border-dashed border-slate-300 flex flex-col gap-1.5 font-mono text-[10.5px]">
+                        <a href="https://forumailite.vercel.app/" target="_blank"
+class="text-teal-700 hover:text-teal-900 font-black flex items-center gap-1">
+  🌐 Live Demo ↗
+</a>
+
+<a href="https://github.com/FaizaQiyyum/Forum-AI-Lite" target="_blank"
+class="text-purple-700 hover:text-purple-900 font-bold flex items-center gap-1">
+  📂 GitHub ↗
+</a>
+                      </div>
+                    </div>
+
+                    <!-- POLAROID CARD 2 -->
+                    <div class="bg-slate-50 border-[2.5px] border-slate-900 p-4 shadow-sm hover:shadow-md transition-all duration-300 transform rotate-[1.2deg] hover:rotate-0 hover:-translate-y-1.5 flex flex-col justify-between group">
+                      <div>
+                        <!-- Polaroid Image Box -->
+                        <div class="aspect-square bg-slate-100 border-2 border-slate-900 rounded-sm mb-3.5 relative overflow-hidden flex flex-col justify-end p-2.5">
+                          <div class="absolute top-2 right-2 border border-emerald-500 font-mono text-[6.5px] font-black tracking-widest text-emerald-600 bg-white/95 px-1 rounded uppercase">
+                            A-GRADE WORK
+                          </div>
+
+                          <!-- Visual representation of Recommendation map -->
+                          <div class="absolute inset-0 flex flex-col justify-center items-center bg-pink-900/10 group-hover:bg-transparent transition-colors p-3 text-center">
+                            <!-- Draw retro directory layout -->
+                            <div class="w-16 h-12 bg-white border border-slate-700 rounded p-1 flex flex-col justify-between shadow-sm select-none">
+                              <div class="flex gap-0.5 justify-start">
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                              </div>
+                              <span class="text-[8px] font-mono text-pink-400 font-black leading-none uppercase">JOBS-MAP</span>
+                              <span class="text-[5px] font-mono text-slate-300 truncate leading-none">A-GRADE MATCH ENGINE</span>
+                            </div>
+                            <!-- Mini circle doodle -->
+                            <span class="text-xs text-pink-500 mt-2 select-none animate-bounce">⭕</span>
+                          </div>
+
+                          <div class="relative z-10 bg-slate-900/90 border border-slate-800 text-white font-mono text-[8.5px] font-bold p-1.5 rounded uppercase leading-relaxed shrink-0">
+                            MATCH CRITERION ENGINE
+                          </div>
+                        </div>
+
+                        <h4 class="font-heading text-xl font-black text-slate-950 tracking-tight leading-none uppercase">
+                          AI Recommendation System
+                        </h4>
+                        <p class="font-sans text-[11.5px] text-slate-600 font-semibold leading-relaxed mt-2 uppercase">
+                          • Final Year Project (Earned perfect A-Grade). Powered by Django with weighted skill context lookup matrices.
+                        </p>
+                      </div>
+
+                      <div class="pt-4 mt-4 border-t border-dashed border-slate-300 flex flex-col gap-1.5 font-mono text-[10.5px]">
+                        <a href="https://github.com/FaizaQiyyum/AI-Job-Recommendation" target="_blank" class="text-purple-700 hover:text-purple-900 font-bold flex items-center gap-1">
+                          📂 GitHub ↗
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- POLAROID CARD 3 -->
+                    <div class="bg-slate-50 border-[2.5px] border-slate-900 p-4 shadow-sm hover:shadow-md transition-all duration-300 transform rotate-[-0.8deg] hover:rotate-0 hover:-translate-y-1.5 flex flex-col justify-between group">
+                      <div>
+                        <!-- Polaroid Image Box -->
+                        <div class="aspect-square bg-slate-100 border-2 border-slate-900 rounded-sm mb-3.5 relative overflow-hidden flex flex-col justify-end p-2.5">
+                          <div class="absolute top-2 right-2 border border-purple-500 font-mono text-[6.5px] font-black tracking-widest text-purple-600 bg-white/95 px-1 rounded uppercase">
+                            RESEARCH
+                          </div>
+
+                          <!-- Visual representation of dataset analysis tool -->
+                          <div class="absolute inset-0 flex flex-col justify-center items-center bg-amber-900/10 group-hover:bg-transparent transition-colors p-3 text-center">
+                            <!-- Draw retro dataset logs graph lines -->
+                            <div class="w-16 h-12 bg-white border border-slate-700 rounded p-1 flex flex-col justify-between shadow-sm select-none">
+                              <span class="text-[7px] font-mono text-slate-500 font-black leading-none uppercase">FASTAPI_RAW</span>
+                              <div class="w-full flex justify-between gap-0.5 items-end h-5">
+                                <span class="w-2 bg-purple-400 h-2"></span>
+                                <span class="w-2 bg-purple-500 h-3"></span>
+                                <span class="w-2 bg-purple-600 h-4"></span>
+                              </div>
+                            </div>
+                            <!-- Mini flower doodle -->
+                            <span class="text-xs text-purple-500 mt-2 select-none">✿</span>
+                          </div>
+
+                          <div class="relative z-10 bg-slate-900/90 border border-slate-800 text-white font-mono text-[8.5px] font-bold p-1.5 rounded uppercase leading-relaxed shrink-0">
+                            DATA_PROFILER_FASTAPI.bat
+                          </div>
+                        </div>
+
+                        <h4 class="font-heading text-xl font-black text-slate-950 tracking-tight leading-none uppercase">
+                          Data Analysis Assistant
+                        </h4>
+                        <p class="font-sans text-[11.5px] text-slate-600 font-semibold leading-relaxed mt-2 uppercase">
+                          • Internal Research Tool built using Python/FastAPI for automated high-volume dataset profiling and report logs.
+                        </p>
+                      </div>
+
+                      <div class="pt-4 mt-4 border-t border-dashed border-slate-300 flex flex-col gap-1.5 font-mono text-[10.5px]">
+                        <a href="https://github.com/FaizaQiyyum/Data-Analysis-Assistant" target="_blank"
+class="text-purple-700 hover:text-purple-900 font-bold flex items-center gap-1">
+  📂 GitHub ↗
+</a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Scrap sketch lines detailing polaroids shadow -->
+                <div class="absolute bottom-3 right-6 flex items-center gap-1.5 opacity-60">
+                  <span class="w-2 h-2 rounded-full bg-slate-500"></span>
+                  <span class="text-[9px] font-mono font-bold tracking-widest text-slate-400">SNAP REGISTER REF // BK_121-S</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- PAGE 5: SKILLS INVENTORY -->
+            <section id="page-skills" class="relative">
+              <!-- Sticky transparent cut washi tape -->
+              <div class="absolute -top-4 right-1/4 w-32 h-8 washi-tape-yellow rotate-[-2.5deg] z-10 flex items-center justify-center font-mono text-[9px] text-amber-900 font-black tracking-widest uppercase">
+                ⚙ TECH INVENTORY
+              </div>
+
+              <!-- Overlapping zine paper board design grid -->
+              <div class="bg-white border-[3.5px] border-slate-900 shadow-md md:shadow-lg p-6 sm:p-10 rounded-3xl relative overflow-hidden paper-offset-left transition-all hover:rotate-0 duration-300">
+                <!-- Grid notebook lines background -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_29px,#f3f4f6_30px)] bg-[size:100%_30px] opacity-70 pointer-events-none"></div>
+
+                <div class="relative z-10 space-y-6">
+                  <div class="flex items-center gap-2">
+                    <span class="text-3xl select-none">✏️</span>
+                    <h3 class="font-heading text-3xl font-black text-slate-900 tracking-tight uppercase">
+                      SYSTEMS & SKILLS STICKERS
+                    </h3>
+                  </div>
+
+                  <p class="font-handwritten text-lg font-bold text-slate-605 leading-relaxed max-w-xl">
+                    No percentages or generic progress bars here — simply pure, unadulterated high-concurrency toolkits scattered like physical stickers on real sketchpad pages!
+                  </p>
+
+                  <!-- STICKERS CATEGORIES GRID -->
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                    
+                    <!-- CATEGORY 1: AI ENGINEERING -->
+                    <div class="bg-teal-50/60 border-[2.5px] border-slate-900 p-5 rounded-2xl transform rotate-[-0.6deg]">
+                      <h4 class="font-heading text-2xl font-black text-teal-900 tracking-tight border-b-2 border-teal-700/30 pb-1.5 mb-3 flex items-center gap-2">
+                        <span>🤖</span> AI Engineering Stickers
+                      </h4>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          OpenAI GPT-4o
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Claude Sonnet
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          NLP Parsing
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Data Profiling
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Vector Embeddings
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- CATEGORY 2: LANGUAGES -->
+                    <div class="bg-pink-50/60 border-[2.5px] border-slate-900 p-5 rounded-2xl transform rotate-[0.8deg]">
+                      <h4 class="font-heading text-2xl font-black text-pink-900 tracking-tight border-b-2 border-pink-700/30 pb-1.5 mb-3 flex items-center gap-2">
+                        <span>💻</span> Language Cutouts
+                      </h4>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Python / Django
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          JavaScript
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          React / State Management
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Java / Core CS
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          SQL Systems
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Tailwind CSS (v4)
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- CATEGORY 3: DATABASES & TOOLS -->
+                    <div class="bg-yellow-50/60 border-[2.5px] border-slate-900 p-5 rounded-2xl transform rotate-[0.5deg]">
+                      <h4 class="font-heading text-2xl font-black text-amber-900 tracking-tight border-b-2 border-amber-700/30 pb-1.5 mb-3 flex items-center gap-2">
+                        <span>📦</span> Data Sheltering Tags
+                      </h4>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          PostgreSQL
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Supabase
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          MySQL Engine
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Git / Revision log
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          FastAPI Routing
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Docker Boxes
+                        </span>
+                      </div>
+                    </div>
+
+                    <!-- CATEGORY 4: QA / TESTING -->
+                    <div class="bg-purple-50/60 border-[2.5px] border-slate-900 p-5 rounded-2xl transform rotate-[-0.7deg]">
+                      <h4 class="font-heading text-2xl font-black text-purple-900 tracking-tight border-b-2 border-purple-700/30 pb-1.5 mb-3 flex items-center gap-2">
+                        <span>🛡️</span> Usability & Verification Pins
+                      </h4>
+                      <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Digital Twin Auditing
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Voice UX Usability
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Structured Bug Reporting
+                        </span>
+                        <span class="px-3 py-1 bg-white border border-slate-900 rounded-lg text-xs font-mono font-bold text-slate-800 shadow-sm transform hover:scale-105 transition-transform">
+                          Stress Load Sprints
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- PAGE 6: ACADEMIC TELEMETRY & CHANNELS -->
+            <section id="page-academics" class="relative">
+              <!-- Sticky tape badge on top -->
+              <div class="absolute -top-4 left-10 w-28 h-8 washi-tape-purple rotate-[-1.5deg] z-10 flex items-center justify-center font-mono text-[9px] text-purple-900 font-extrabold pb-0.5">
+                🎓 ACADEMIC CHANNELS
+              </div>
+
+              <!-- Overlapping zine paper sheet layout -->
+              <div class="bg-white border-[3.5px] border-slate-900 shadow-md md:shadow-lg p-6 sm:p-10 rounded-3xl relative overflow-hidden paper-offset-right transition-all hover:rotate-0 duration-300">
+                <div class="absolute inset-[3px] border-[2px] border-dashed border-slate-350 rounded-2.5xl pointer-events-none"></div>
+
+                <div class="relative z-10 space-y-6">
+                  <div class="flex items-center gap-2">
+                    <span class="text-3xl select-none">🎓</span>
+                    <h3 class="font-heading text-3xl font-black text-slate-900 tracking-tight uppercase">
+                      ACADEMIC TELEMETRY PROTOCOLS
+                    </h3>
+                  </div>
+
+                  <!-- Academy Degree folder card mock -->
+                  <div class="bg-amber-50/75 border-[2.5px] border-slate-900 p-5 rounded-2xl relative transform rotate-[-0.6deg] flex flex-col md:flex-row items-start justify-between gap-6">
+                    <div class="space-y-3">
+                      <div class="inline-flex items-center gap-1 bg-slate-900 text-yellow-355 text-amber-200 border-2 border-slate-950 px-3 py-0.5 text-xs font-mono font-black rounded uppercase">
+                        CERTIFIED CLASSIFICATION
+                      </div>
+
+                      <h4 class="font-heading text-3xl font-black text-slate-900 tracking-tight leading-none">
+                        Bachelor of Science in Computer Science (BSCS)
+                      </h4>
+                      <p class="font-mono text-xs font-bold text-slate-500 uppercase">
+                        🎓 BSCS — Virtual University of Pakistan
+                      </p>
+
+                      <p class="font-sans text-sm font-semibold leading-relaxed text-slate-700">
+                        I completed my Final Year Project with a perfect 4/4 CGPA and earned an A grade in CS core subjects, proving academic foundations alongside real world engineering.
+                      </p>
+                    </div>
+
+                    <!-- Stamp of GPA Distinction Badge -->
+                    <div class="border-[3px] border-double border-red-700 text-red-700 px-4 py-2 text-center rounded-lg transform rotate-[8deg] shrink-0 font-heading font-black select-none uppercase">
+                      <p class="text-[9px] font-mono tracking-wider font-extrabold">FYP SCORE</p>
+                      <p class="text-2xl font-black">4.0 GPA</p>
+                      <p class="text-[8.5px] font-mono tracking-widest leading-none mt-0.5">IN FINAL PROJECT</p>
+                    </div>
+                  </div>
+
+                  <!-- CHANNELS AND FOOTER LINKS -->
+                  <div class="pt-6 border-t-2 border-dashed border-slate-300 flex flex-col sm:flex-row justify-between items-center gap-6">
+                    
+                    <div class="text-left">
+                      <p class="font-handwritten text-4.50xl text-slate-900 leading-none">Faiza Qiyyum</p>
+                      <p class="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-black mt-2">Certified Portfolio // Level-5 Active Agent</p>
+                    </div>
+
+                    <!-- Clean, hand-drawn styled links linking to GitHub, LinkedIn, Email -->
+                    <div class="flex gap-4">
+                      
+                      <!-- GITHUB -->
+                      <a href="https://github.com/FaizaQiyyum" target="_blank" class="w-12 h-12 bg-white hover:bg-slate-950 border-[2.5px] border-slate-900 rounded-xl flex items-center justify-center shadow-sm hover:shadow-md hover:text-white transition-all transform hover:-translate-y-1 rotate-[-3deg]" title="GitHub Profile">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z"></path>
+                        </svg>
+                      </a>
+
+                      <!-- LINKEDIN -->
+                      <a href="https://linkedin.com/in/faizaqiyyum" target="_blank" class="w-12 h-12 bg-white hover:bg-sky-600 border-[2.5px] border-slate-900 rounded-xl flex items-center justify-center shadow-sm hover:shadow-md hover:text-white transition-all transform hover:-translate-y-1 rotate-[2deg]" title="LinkedIn Corporate Logs">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                        </svg>
+                      </a>
+
+                      <!-- EMAIL DIRECT -->
+                      <a href="mailto:faizaqiyyum121@gmail.com" class="w-12 h-12 bg-white hover:bg-rose-500 border-[2.5px] border-slate-900 rounded-xl flex items-center justify-center shadow-sm hover:shadow-md hover:text-white transition-all transform hover:-translate-y-1 rotate-[-1deg]" title="Send Instant Encrypted Mail">
+                        <span class="text-xl">✉️</span>
+                      </a>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </section>
+
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS for interactive bookmarks and smooth layout highlight navigation -->
+    <script>
+      // Active Tab Highlighter helper in notebook side menu
+      function setActiveTab(clickedElement) {
+        // Remove active class from all tabs
+        const tabs = document.querySelectorAll('.nav-tab');
+        tabs.forEach(tab => {
+          tab.classList.remove('bg-amber-100', 'active-tab-glow', 'border-amber-500');
+          tab.classList.add('bg-white');
+        });
+
+        // Add active style to selected notebook divider tab
+        clickedElement.classList.remove('bg-white');
+        clickedElement.classList.add('bg-amber-100', 'active-tab-glow');
+      }
+
+      // Proactively mark active page divider on scroll positioning
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        
+        let currentActiveSectionId = 'page-hero';
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= 140 && rect.bottom >= 140) {
+            currentActiveSectionId = sec.id;
+          }
+        });
+
+        navTabs.forEach(tab => {
+          tab.classList.remove('bg-amber-100', 'active-tab-glow');
+          tab.classList.add('bg-white');
+          if (tab.getAttribute('href') === `#${currentActiveSectionId}`) {
+            tab.classList.remove('bg-white');
+            tab.classList.add('bg-amber-100', 'active-tab-glow');
+          }
+        });
+      });
+
+      // Initialize the first active tab on load
+      document.addEventListener('DOMContentLoaded', () => {
+        const firstTab = document.querySelector('.nav-tab');
+        if (firstTab) {
+          firstTab.classList.remove('bg-white');
+          firstTab.classList.add('bg-amber-100', 'active-tab-glow');
+        }
+      });
+    </script>
+  </body>
+</html>

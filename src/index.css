@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;850&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&family=Caveat:wght@600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-handwritten: "Caveat", cursive;
+
+  --color-dossier-dark: #12161a;
+  --color-dossier-panel: #1b2126;
+  --color-dossier-accent: #2e82cf;
+  --color-dossier-orange: #f97316;
+  --color-dossier-crimson: #991b1b;
+  --color-dossier-gold: #eab308;
+  --color-dossier-neon: #a855f7;
+}
+
+@layer base {
+  body {
+    background-color: #0f1316;
+    background-size: 24px 24px;
+    background-image: 
+      radial-gradient(#1c2229 1px, transparent 1px);
+    color: #e2e8f0;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* realistic paper dossier card */
+.dossier-sheet {
+  background: #e1e4e6;
+  color: #1a202c;
+  border-radius: 4px;
+  box-shadow: 
+    0px 1px 3px rgba(0,0,0,0.4),
+    0px 10px 30px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+  font-family: var(--font-sans);
+  position: relative;
+  border: 1px solid #c8ccd0;
+}
+
+/* Semi-transparent cello-tape used to stick elements in dossiers */
+.dossier-tape {
+  background: rgba(246, 246, 235, 0.55);
+  backdrop-filter: blur(0.5px);
+  box-shadow: 
+    0 1px 3px rgba(0,0,0,0.08),
+    inset 0 0 1px rgba(255,255,255,0.7);
+  border-left: 1px dashed rgba(255,255,255,0.4);
+  border-right: 1px dashed rgba(255,255,255,0.4);
+  transform: rotate(-3deg);
+  opacity: 0.9;
+}
+
+/* Notebook Blueprint Grid Paper Styles */
+.scrapbook-grid-blue {
+  background-color: #fafbfd;
+  background-image: 
+    linear-gradient(to right, rgba(0, 102, 204, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 102, 204, 0.07) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.scrapbook-grid-red {
+  background-color: #fcfbf9;
+  background-image: 
+    linear-gradient(to right, rgba(220, 38, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(220, 38, 38, 0.04) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.scrapbook-lined {
+  background-color: #fdfdfb;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 100% 24px;
+}
+
+/* Red margin guide line inside school journals */
+.journal-margin-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 36px;
+  width: 1px;
+  background-color: rgba(239, 68, 68, 0.35);
+  pointer-events: none;
+}
+
+/* Heavy texture desk workspace background overlay */
+.desk-tabletop {
+  background-color: #0b0c0e;
+  background-image: 
+    radial-gradient(ellipse at 50% 50%, rgba(30, 41, 59, 0.25) 0%, rgba(15, 23, 42, 0.8) 80%),
+    url("data:image/svg+xml,%3Csvg viewBox='0%200%20200%20200'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter%20id='noiseFilter'%3E%3CfeTurbulence%20type='fractalNoise'%2520baseFrequency='0.65'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23noiseFilter)'%20opacity='0.045'/%3E%3C/svg%3E");
+}
+
+/* Jagged hand-torn paper borders */
+.paper-torn-edge {
+  filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.15));
+  clip-path: polygon(
+    0% 0%, 100% 0%, 
+    100% 97.4%, 98.5% 98.8%, 97.2% 96.5%, 96.1% 99.2%, 94.8% 97.1%, 93.5% 98.5%, 92.2% 96.8%, 91.1% 98.9%, 90% 97.5%, 88.5% 99.1%, 87.2% 97.3%, 85.8% 98.4%, 84.4% 96.7%, 83.1% 98.9%, 81.8% 97.1%, 80.4% 98.6%, 79% 96.9%, 77.5% 98.7%, 76% 97.5%, 74.5% 99.2%, 73% 97%, 71.5% 98.8%, 70% 97.2%, 68.5% 99.1%, 67% 97.4%, 65.5% 98.5%, 64% 96.9%, 62.5% 98.8%, 61% 97.1%, 59.5% 99%, 58% 97.3%, 56.5% 98.5%, 55% 96.8%, 53.5% 98.9%, 52% 97.2%, 50.5% 99.1%, 49% 97.4%, 47.5% 98.6%, 46% 96.9%, 44.5% 98.8%, 43% 97.1%, 41.5% 99%, 40% 97.3%, 38.5% 98.4%, 37% 96.8%, 35.5% 98.9%, 34% 97.2%, 32.5% 99.1%, 31% 97.3%, 29.5% 98.6%, 28% 96.9%, 26.5% 98.8%, 25% 97.1%, 23.5% 99%, 22% 97.3%, 20.5% 98.5%, 19% 96.8%, 17.5% 98.9%, 16% 97.2%, 14.5% 99.1%, 13% 97.4%, 11.5% 98.6%, 10% 96.9%, 8.5% 98.8%, 7% 97.1%, 5.5% 99%, 4% 97.3%, 2.5% 98.5%, 0% 97%
+  );
+}
+
+.paper-torn-top {
+  filter: drop-shadow(0px -1px 2px rgba(0,0,0,0.1));
+  clip-path: polygon(
+    0% 3%, 1.5% 1%, 3% 3.5%, 4.5% 0.8%, 6% 2.9%, 7.5% 1.2%, 9% 3.1%, 10.5% 0.9%, 12% 2.8%, 13.5% 1.1%, 15% 3%, 16.5% 1%, 18% 3.2%, 19.5% 0.9%, 21% 2.8%, 22.5% 1.1%, 24% 3.1%, 25.5% 0.8%, 27% 2.9%, 28.5% 1.2%, 30% 3.1%, 31.5% 0.9%, 33% 2.8%, 34.5% 1.1%, 36% 3%, 37.5% 1%, 39% 3.2%, 40.5% 0.9%, 42% 2.8%, 43.5% 1.1%, 45% 3.1%, 46.5% 0.8%, 48% 2.9%, 49.5% 1.2%, 51% 3.1%, 52.5% 0.9%, 54% 2.8%, 55.5% 1.1%, 57% 3%, 58.5% 1%, 60% 3.2%, 61.5% 0.9%, 63% 2.8%, 64.5% 1.1%, 66% 3.1%, 67.5% 0.8%, 69% 2.9%, 70.5% 1.2%, 72% 3.1%, 73.5% 0.9%, 75% 2.8%, 76.5% 1.1%, 78% 3%, 79.5% 1%, 81% 3.2%, 82.5% 0.9%, 84% 2.8%, 85.5% 1.1%, 87% 3.1%, 88.5% 0.8%, 90% 2.9%, 91.5% 1.2%, 93% 3.1%, 94.5% 0.9%, 96% 2.8%, 97.5% 1.1%, 100% 3%,
+    100% 100%, 0% 100%
+  );
+}
+
+/* Postage stamp jagged edges */
+.postage-stamp-border {
+  background-color: #fff;
+  filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.15));
+  mask: radial-gradient(circle 5px at 5px 5px, transparent 100%, red 0) -5px -5px;
+}
+
+/* Handwritten high-contrast pen inks */
+.pencil-red {
+  color: #dc2626;
+  font-family: var(--font-handwritten);
+}
+
+.pencil-blue {
+  color: #1d4ed8;
+  font-family: var(--font-handwritten);
+}
+
+/* Coffee Stain Effect */
+.coffee-stain {
+  position: absolute;
+  width: 140px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: rgba(92, 60, 36, 0.05);
+  box-shadow: 
+    0 0 15px 4px rgba(92, 60, 36, 0.04),
+    inset 0 0 10px 2px rgba(92, 60, 36, 0.06);
+  border: 1px dashed rgba(92, 60, 36, 0.04);
+  pointer-events: none;
+}
+
+/* Metal double spiral binding rings decoration */
+.binder-spiral-ring {
+  background: linear-gradient(to right, #64748b 0%, #cbd5e1 30%, #e2e8f0 50%, #94a3b8 70%, #475569 100%);
+  border-radius: 6px;
+  box-shadow: 
+    2px 2px 3px rgba(0, 0, 0, 0.35),
+    inset -1px -1px 2px rgba(0,0,0,0.4);
+}
+
+/* Grid overlay for binder rings slot cuts */
+.binder-slot-cut {
+  background: linear-gradient(to bottom, #090b0d, #1e2630, #090b0d);
+  border-radius: 2px;
+  box-shadow: inset 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Weathered ink stamps */
+.dossier-stamp-red {
+  color: #991b1b;
+  border: 3px double #991b1b;
+  text-shadow: 0 0 1px rgba(153, 27, 27, 0.2);
+  letter-spacing: 0.15em;
+  transform: rotate(-12deg);
+  font-family: var(--font-display);
+  font-weight: 800;
+  opacity: 0.85;
+  mix-blend-mode: multiply;
+  box-shadow: 0 0 0 2px rgba(153, 27, 27, 0.1);
+  padding: 4px 10px;
+}
+
+.dossier-stamp-blue {
+  color: #1e3a8a;
+  border: 3px double #1e3a8a;
+  letter-spacing: 0.12em;
+  transform: rotate(8deg);
+  font-family: var(--font-display);
+  font-weight: 800;
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+  padding: 3px 8px;
+}
+
+/* Light & Shadow cast overlay - exactly like the reference photo */
+.shadow-cast-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.05) 0%, 
+    rgba(255, 255, 255, 0.02) 20%, 
+    rgba(0, 0, 0, 0.2) 40%, 
+    rgba(0, 0, 0, 0.55) 75%, 
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 40;
+}
+
+/* Tactical level gauges */
+.tactical-bar-bg {
+  background: #cbd5e1;
+  border: 1.5px solid #475569;
+  height: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tactical-bar-fill {
+  background: #1e293b;
+  height: 100%;
+  transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.tactical-bar-fill.accented {
+  background: #991b1b;
+}
+
+/* Retro HUD layout panels */
+.hud-panel {
+  background: #171d22;
+  border: 1px solid #2a343d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hud-panel-title {
+  background: #20282f;
+  border-bottom: 1px solid #2a343d;
+  color: #94a3b8;
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Styled text glow colors */
+.text-tactical {
+  color: #38bdf8;
+  text-shadow: 0 0 6px rgba(56, 189, 248, 0.35);
+}
+
+.text-crimson {
+  color: #ef4444;
+}
